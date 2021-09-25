@@ -34,7 +34,6 @@ days = list(data)[:2]
 last_data = float(data[days[0]]["4. close"])
 prelast_data = float(data[days[1]]["4. close"])
 value = round((last_data - prelast_data)/prelast_data * 100, 2)
-print(value)
 
 run_alert = False
 selected_articles = []
@@ -44,13 +43,11 @@ if value >= 2 or value <= -2:
     news = requests.get(url="https://newsapi.org/v2/everything?", params=news_parameters)
     news.raise_for_status()
     all_articles = news.json()
-    print(all_articles)
     for i in range(3):
         selected_article = {}
         selected_article["Headline"] = all_articles["articles"][i]["title"]
         selected_article["Content"] = all_articles["articles"][i]["description"]
         selected_articles.append(selected_article)
-    print(selected_articles)
 
 if run_alert:
     for i in range(len(selected_articles)):
@@ -64,7 +61,6 @@ if run_alert:
                 from_='+19285998325',
                 to='+48512921263'
             )
-            print(message.sid)
 
         elif value <= -2:
             message = client.messages \
@@ -75,4 +71,3 @@ if run_alert:
                 from_='+19285998325',
                 to='+48512921263'
             )
-            print(message.sid)
