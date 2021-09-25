@@ -59,7 +59,7 @@ if run_alert:
                      f'HEADLINE: {selected_articles[i]["Headline"]}\n'
                      f'Brief: {selected_articles[i]["Content"]}',
                 from_='+19285998325',
-                to='+48512921263'
+                to='+48***' #provide your own mobile
             )
 
         elif value <= -2:
